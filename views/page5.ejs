@@ -1,0 +1,62 @@
+<%- include partials/header.ejs %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form</title>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <button type="submit" class="btn">Submit</button>
+        <button class="btn btn-success" onclick="connectMetamask()">CONNECT TO METAMASK</button>  
+         <button class="btn btn-success" onclick="connectcontractaddress()">CONTRACT ADDRESS</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        // Get form values
+        var email = document.getElementById("email").value;
+       
+        // You can perform validation or further processing here
+        
+        // Log form values to console for demonstration
+        console.log("Email:", email);
+        
+        
+        let account;
+        const connectMetamask = async () => {
+            if(window.ethereum !== "undefined") {
+                const accounts = await ethereum.request({method: "eth_requestAccounts"});
+                account = accounts[0];
+                document.getElementById("userArea").innerHTML = `User Account: ${account}`;
+            }
+        }
+
+        const connectContract = async () => {
+            const ABI = 
+          
+            ;
+            const Address = ""; // Taking Address from Remix 
+            window.web3 = await new Web3(window.ethereum);
+            window.contract = await new window.web3.eth.Contract(ABI, Address);
+            document.getElementById("contractArea").innerHTML = "Connected to Contract"; // calling the elementID above
+        }
+    });
+</script>
+
+</body>
+</html>

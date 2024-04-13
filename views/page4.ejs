@@ -1,0 +1,110 @@
+<%- include partials/header.ejs %>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dynamic Data Display</title>
+        <style>
+            body,
+            ul {
+                margin: 0;
+                padding: 0;
+            }
+
+
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                padding: 20px;
+            }
+
+
+            .card {
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+
+
+            .coin-name {
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 8px;
+                font-size: 18px;
+            }
+
+
+            .coin-price {
+                color: #777;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul id="dynamicList"></ul>
+
+        <script>
+            const api_call = async () => {
+                const url = 'https://weatherapi-com.p.rapidapi.com/current.json?q=53.1%2C-0.13';
+                const options = {
+                    method: 'GET',
+                    headers: {
+                        'X-RapidAPI-Key': '72e890e0a7msha9581f1b4dba5a8p11cf42jsne969811ff327',
+                        'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+                    }
+                };
+
+                let result = null;
+                try {
+                    const response = await fetch(url, options);
+                    result = await response.json();
+
+                    function displayDynamicData() {
+                        const dynamicList = document.getElementById('dynamicList');
+
+                        dynamicList.innerHTML = '';
+                        const card = document.createElement('div');
+                            card.className = 'card';
+                            card.style.backgroundColor = getRandomLightColor();
+
+                            var coinName = document.createElement("p");
+                            coinName.textContent = result.location.name;
+                            coinName.className = "coin-name";
+                            card.appendChild(coinName);
+
+
+                            var coinPrice = document.createElement("p");
+                            coinPrice.textContent = result.current.temp_c;
+                            coinPrice.className = "coin-price";
+                            card.appendChild(coinPrice);
+
+
+                            dynamicList.appendChild(card);
+                       
+                    }
+                    displayDynamicData();
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+            api_call()
+
+
+            function getRandomLightColor() {
+                const min = 180;
+                const max = 255;
+                const range = max - min;
+                const r = Math.floor(Math.random() * range) + min;
+                const g = Math.floor(Math.random() * range) + min;
+                const b = Math.floor(Math.random() * range) + min;
+                return rgb(${r}, ${g}, ${b});
+            }
+        </script>
+    </body>
+
+    </html>

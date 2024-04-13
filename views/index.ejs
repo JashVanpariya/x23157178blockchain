@@ -1,0 +1,218 @@
+<%- include partials/header.ejs %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian Premier League Fan Park</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #aa4b6b;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+
+    .jumbotron {
+      background: #8E2DE2;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        color: #fff;
+        padding: 40px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .container {
+        margin-bottom: 30px;
+    }
+
+    .card {
+        border: none;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .card:hover {
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .card-title {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body onload="connectMetamask(),connectContract()"> 
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+
+
+<div class="jumbotron">
+    <h1 class="display-4">INDIAN PREMIERE LEAGUE FAN PARK</h1>
+    <hr class="my-4">
+    <p>Welcome to the Indian Premier League Fan Park! Here you can book your slot.</p>
+</div>
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-md-6 offset-md-3">
+          <div id="readArea" class="text-center">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/1200px-MetaMask_Fox.svg.png" alt="MetaMask Logo" style="width: 100px; height: 100px;">
+              <h2 class="mt-3">Connected to MetaMask</h2>
+              <p id="userArea" class="mt-3 text-muted">Status: Not connected to MetaMask</p>
+              <p id="contractArea">Status: Not connected to Contract</p>
+          </div>
+      </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <a href="/page1">
+          <img src="https://assets-in.bmscdn.com/nmcms/events/banner/desktop/media-desktop-mumbai-indians-vs-kolkata-knight-riders-0-2024-4-4-t-13-6-8.jpg" alt="IPL Image 1" class="img-fluid">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">Match: Mumbai Indians vs Kolkata Knight Riders</h5>
+          <p class="card-text">Location: Wankhede Stadium</p>
+          <p class="card-text">Timing: Tuesday 19:00</p>
+          <button onclick="depositContract()">Buy now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <a href="/page1">
+          <img src="https://assets-in.bmscdn.com/nmcms/events/banner/desktop/media-desktop-mumbai-indians-vs-royal-challengers-bengaluru-0-2024-4-4-t-13-8-16.jpg" alt="IPL Image 2" class="img-fluid">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">Match: Mumbai Indians vs Royal Challengers Bengaluru</h5>
+          <p class="card-text">Location: M. Chinnaswamy Stadium</p>
+          <p class="card-text">Timing: Monday 14:00 </p>
+          <button onclick="depositContract()">Buy now</button>
+        </div>
+      </div>
+    </div>
+  
+      <div class="col-md-4">
+        <div class="card">
+          <a href="/page1">
+            <img src="https://assets-in.bmscdn.com/nmcms/events/banner/desktop/media-desktop-rajasthan-royals-vs-gujrat-titans-0-2024-3-27-t-11-18-48.jpg" class="img-fluid">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Match: Gujarat Titans vs Rajasthan Royals</h5>
+            <p class="card-text">Location: Narendra Modi Stadium</p>
+            <p class="card-text">Timing: Friday 19:00</p>
+            <button onclick="depositContract()">Buy now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <a href="/page1">
+            <img src="https://assets-in.bmscdn.com/nmcms/events/banner/desktop/media-desktop-rajasthan-royals-vs-gujrat-titans-0-2024-3-27-t-11-18-48.jpg" class="img-fluid">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Match: Rajasthan Royals vs Gujarat Titans</h5>
+            <p class="card-text">Location: Sawai Mansingh stadium</p>
+            <p class="card-text">Timing: Saturday 14:00</p>
+            <!-- Add the Buy Now button -->
+            <button onclick="depositContract()">Buy now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <a href="/page1">
+            <img src="https://assets-in.bmscdn.com/nmcms/events/banner/desktop/media-desktop-mumbai-indians-vs-chennai-super-kings-0-2024-4-4-t-13-8-40.jpg" class="img-fluid">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Match: Mumbai Indians vs Chennai Super Kings</h5>
+            <p class="card-text">Location: Chidambaram Stadium</p>
+            <p class="card-text">Timing: Date Wednesday Time 19:00</p>
+            <button onclick="depositContract()">Buy now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <a href="/page1">
+            <img src="https://assets-in.bmscdn.com/nmcms/events/banner/desktop/media-desktop-mumbai-indians-vs-sunrisers-hyderabad-0-2024-4-4-t-13-9-36.jpg" class="img-fluid">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Match: Mumbai Indians vs Sunrisers Hyderabad</h5>
+            <p class="card-text">Location: Rajiv Gandhi Stadium</p>
+            <p class="card-text">Timing: Sunday 19:00</p>
+            <button onclick="depositContract()">Buy now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+ </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  let account;
+  const connectMetamask = async () => {
+      if(window.ethereum !== "underfined"){
+          const accounts = await ethereum.request({method: "eth_requestAccounts"});
+          account = accounts[0];
+          document.getElementById("userArea").innerHTML = `User Account: ${account}`;
+      }
+  }
+
+  const connectContract = async () => {
+            const ABI =[
+	{
+		"inputs": [],
+		"name": "deposit",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	}
+]
+
+  const Address = "0x01dbe78f99502f5720738655896957e926a24747"; // Taking Address from Remix
+            window.web3 = await new Web3(window.ethereum);
+            window.contract = await new window.web3.eth.Contract(ABI, Address);
+            document.getElementById("contractArea").innerHTML = "Connected to Contract"; // calling the elementID above
+        }
+ 
+  const depositContract = async () => {
+            // const amount = document.getElementById("depositInput").value;
+            await window.contract.methods.deposit().send({from: account, value: 1});
+        }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include partials/footer.ejs %>
