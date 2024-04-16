@@ -10,17 +10,16 @@
 <style>
     body {
         font-family: Arial, sans-serif;
-        background: #aa4b6b;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: #aa4b6b;  
+        background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); 
+        background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); 
 
     }
 
     .jumbotron {
-      background: #8E2DE2;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+      background: #8E2DE2;  
+      background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  
+      background: linear-gradient(to right, #4A00E0, #8E2DE2); 
         color: #fff;
         padding: 40px;
         text-align: center;
@@ -129,7 +128,7 @@
             <h5 class="card-title">Match: Rajasthan Royals vs Gujarat Titans</h5>
             <p class="card-text">Location: Sawai Mansingh stadium</p>
             <p class="card-text">Timing: Saturday 14:00</p>
-            <!-- Add the Buy Now button -->
+            
             <button onclick="depositContract()">Buy now</button>
           </div>
         </div>
@@ -190,10 +189,10 @@
 	}
 ]
 
-  const Address = "0x01dbe78f99502f5720738655896957e926a24747"; // Taking Address from Remix
+  const Address = "0x01dbe78f99502f5720738655896957e926a24747"; 
             window.web3 = await new Web3(window.ethereum);
             window.contract = await new window.web3.eth.Contract(ABI, Address);
-            document.getElementById("contractArea").innerHTML = "Connected to Contract"; // calling the elementID above
+            document.getElementById("contractArea").innerHTML = "Connected to Contract"; 
         }
  
   const depositContract = async () => {

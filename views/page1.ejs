@@ -98,8 +98,8 @@
 		"type": "function"
 	}
 ];
- // Enter your contract's ABI here
-        const Address = "0xD4D1B7b3945058424a974E028C36e510Db7920A3"; // Enter your contract's address here
+
+        const Address = "0xD4D1B7b3945058424a974E028C36e510Db7920A3"; 
         window.web3 = await new Web3(window.ethereum);
         window.contract = await new window.web3.eth.Contract(ABI, Address);
         document.getElementById("contractArea").innerHTML = "Connected to Contract";
